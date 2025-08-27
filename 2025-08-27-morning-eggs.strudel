@@ -1,0 +1,18 @@
+setcpm(120/4)
+
+// Drum
+$: s(`
+bd*4, - sd - sd,
+- - [~ hh*2] -,
+- - - [- - oh -]
+`).bank("tr909").gain(0.25)
+  .room(0.2)
+._pianoroll()
+
+
+$: n(irand(8)).struct("<x*2 x [- x] [x -]>*8")
+  .scale("F4:minor").sound("piano")
+  .room(0.6)
+  .delay(0.2)
+  .lpf(300)
+._pianoroll()
