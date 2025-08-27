@@ -1,0 +1,54 @@
+setcpm(120/4)
+
+_$: sound(`
+<bd [bd hh] sd [bd hh] - bd oh bd>*8, 
+<rim * 4 _ rim * 4 [- rim - rim]>*4
+`).bank("RolandTR909")
+
+
+$: note("<[c2 c3]*4 [bb1 bb2]*4 [f2 f3]*4 [eb2 eb3]*4>")
+.sound("gm_synth_bass_1")
+.lpf(800)
+
+$: note("<c3 bb2 f3 eb3>")
+.sound("gm_synth_strings_2")
+
+
+$: sound(`
+  bd * 4,
+  [- <[hh hh] hh>] * 4,
+  [- <sd [ - cp] >] * 2
+`).bank("RolandTR909")
+
+$: n("<[0 <- 7>] -1*2 <4 4 4 3>>*<4 8>").scale("F4:minor").sound("gm_marimba")
+
+// sounds like a whimisical indie game background
+// $: note("52 59 62 64, 36 43").sound("gm_electric_guitar_muted")
+
+// note("48 67 63 [62, 58]").sound("piano, gm_electric_guitar_muted")
+
+// slow bass
+// note("[36 34 41 39]/4").sound("gm_acoustic_bass")
+
+// faster bass: same notes but make it strung faster with []*4
+
+// alternate
+// note("60 <63 62 65 63>").sound("gm_xylophone")
+
+// scales
+// n("<0 -3>, 2 4 <[6,8] [7,9]>").scale("<C:major D:mixolydian>/4").sound("piano")
+
+// n("<[4@2 4] [5@2 5] [6@2 6] [5@2 5]>*2")
+// .scale("<C2:mixolydian F2:mixolydian>/4")
+// .sound("gm_acoustic_bass")
+
+
+
+
+// $: n(`<
+// [~ 0] 2 [0 2] [~ 2]
+// [~ 0] 1 [0 1] [~ 1]
+// [~ 0] 3 [0 3] [~ 3]
+// [~ 0] 2 [0 2] [~ 2]
+// >*4`).scale("C4:minor")
+// .sound("gm_synth_strings_1")
