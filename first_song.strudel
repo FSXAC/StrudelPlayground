@@ -9,9 +9,13 @@ _$: sound(`
 $: note("<[c2 c3]*4 [bb1 bb2]*4 [f2 f3]*4 [eb2 eb3]*4>")
 .sound("gm_synth_bass_1")
 .lpf(800)
+.delay(0.2)
+.room(0.5)
+.gain(0.65)._scope()
 
 $: note("<c3 bb2 f3 eb3>")
 .sound("gm_synth_strings_2")
+.gain(1.2)
 
 
 $: sound(`
@@ -19,8 +23,11 @@ $: sound(`
   [- <[hh hh] hh>] * 4,
   [- <sd [ - cp] >] * 2
 `).bank("RolandTR909")
+.room(0.2).roomsize(2)
+._pianoroll()
 
-$: n("<[0 <- 7>] -1*2 <4 4 4 3>>*<4 8>").scale("F4:minor").sound("gm_marimba")
+$: n("<[0 <- 7>] -1*2 <4 4 4 3>>*<4 8>").scale("F4:minor")
+  .sound("gm_marimba")._pianoroll()
 
 // sounds like a whimisical indie game background
 // $: note("52 59 62 64, 36 43").sound("gm_electric_guitar_muted")
