@@ -1,0 +1,36 @@
+setcpm(120/4)
+
+$: s("sbd * 4")
+  .distort("2.6:0.5")
+  .gain(0.2)
+  .duck("2:3:4").duckattack(0.1).duckdepth(0.5)
+  ._scope()
+$: s("hh * 8, - - - [- cp*<1 2>]").bank("tr909")
+  .gain(0.1)
+
+
+$bass: n(irand(10).sub(7).seg("16 [8 16 8 16] [16 [8 -]] 16")).scale("<C3:pentatonic F:pentatonic C3:pentatonic C4:pentatonic>")
+  .s("sawtooth").lpf(slider(226.05, 150, 800)).lpenv(slider(2.16,0,8)).lpq(6)
+  .orbit(2)
+  .distort("1.5:.3")
+  .room(0.8).roomsize(4)
+  .gain(0.45)
+  ._pianoroll()
+
+$: n("<[2 4 7 5] [2 4 7 6] [2 4 6 5] [2 4 5 0]>*2").scale("C3:pentatonic").s("sawtooth")
+  .lpf(450)
+  .room(0.8).roomsize(10)
+
+$: note("c4*2 c4 e4*4 d4*4").sound("sleighbells")
+
+$: n(irand(15).sub(10).seg("16")).scale("C6:pentatonic").sound("gm_music_box").decay(0.2)
+.room(0.1)
+.pan(0.7)
+.gain("<0.1 0.2 0.3 0.4 0.4 0.3 0.2 0.1>")
+
+// $: note("<[B4*2 Cb4] B3*4 A4*4 A3*4>*4").sub(7).sound("gm_synth_bass_2")
+
+$pad: note("<<B1, C3, B4, B5>@ <A1, F4, A4, A5>@>, <[- - - [- C4 D4 E4]] [- - - [- C4 D4 E4]]>").sound("gm_pad_metallic")
+.gain("0.2")
+.pan(sine.range(0.25, 0.75))
+._pianoroll()
