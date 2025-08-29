@@ -1,0 +1,38 @@
+setcpm(135/4)
+
+let p = 3
+
+d0: s("<bd - >").bank("polaris")
+d1: s("<bd bd bd bd bd bd [bd - - bd*<1 2>] [bd bd]> * 4").bank("ms404")
+._punchcard()
+
+d3: s("[- sd] * 4").bank("mpc1000")
+  .gain(p >= 1 ? 0.4 : 0)
+
+d4: s("<- [hh*8@ hh*16 hh*32]> / 4").bank("mpc1000")
+  .gain(p >= 1 ? "<0.0 0.05 0.1 [0.2 0.3]>" : 0)
+
+// D2 A1 A1# C2
+b: n("<[[0 [-  0* 2]] [ 0*2 0]]>".add("<0 -3 -2 -1>")).scale("D2:minor, D3:minor").s("gm_synth_bass_1")
+  .lpf(1000).lpenv(0.1)
+  .gain(p >= 1 ? "0.4" : 0)
+  .room(0.2)
+  ._pianoroll()
+
+s1: n("<0 -3 -2 -1>").scale("D5:minor").s("supersaw")
+.attack(0.3)
+.clip(2)
+.decay(4.0)
+.release(1.2)
+.lpf("2000").lpenv(0.1).room(0.4).roomsize(10).gain(0.2)
+.gain(p >= 2 ? 0.4 : 0)
+
+m1: n("[7 4 2 0]*4").scale("<D5:minor A4:minor Bb4:major C5:major>")
+.clip(2).s("gm_epiano1")
+  .gain(p >= 3 ? 0.5 : 0)
+  ._pianoroll()
+
+// note("c eb g c4")
+// .clip(2).s("gm_electric_guitar_clean")
+
+// $: n("0,4,7").s('supersquare').octave("<3 4 5 6>").osc()
