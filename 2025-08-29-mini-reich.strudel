@@ -1,0 +1,12 @@
+setcpm(130/3)
+
+const gm = "[4 0 - 2] [2 -1 0 -] [3 1 6 -]"
+
+stack(
+  n(gm),
+  n(gm.sub(7)),
+  n(gm.add(4)).late(2/3),
+  n(gm).add(2).late(1/3).mask("0 0 1")
+  
+).scale("<B4:pentatonic!3 F#4:pentatonic>/2").piano().room(0.2)._pianoroll()
+// note("<[F#5 B4 - D5] [D5 A4 B3 -] [E4 C5 A4 -]>*2").piano()
