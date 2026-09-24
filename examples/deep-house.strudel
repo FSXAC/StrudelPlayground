@@ -1,0 +1,40 @@
+// Deep house, 122bpm, F minor. Late night, warm, a bit jazzy
+setcpm(122/4)
+
+kick: s("bd*4").bank("RolandTR909").gain(0.9)
+  ._scope()
+
+hats: s("[- oh]*4").bank("RolandTR909").gain(0.3).cut(1)
+
+ticks: s("hh*16").bank("RolandTR909")
+  .gain("[0.2 0.08 0.12 0.08]*4")
+  .swingBy(1/6, 4)
+
+clap: s("- cp - cp").bank("RolandTR909")
+  .room(0.3).gain(0.5)
+
+shaker: s("[- sh sh sh]*4").bank("RolandTR808")
+  .gain(perlin.range(0.05, 0.15)).pan(0.7)
+
+// classic rhodes stabs on the offbeats
+stabs: chord("<Fm9 Bbm9 Eb^9 Ab^7>")
+  .voicing()
+  .struct("[- x] - [- x] [- x - -]")
+  .s("gm_epiano1")
+  .lpf(1800).room(0.5)
+  .delay(0.25).delaytime(3/16).delayfeedback(0.3)
+  .gain(0.6)
+  ._pianoroll()
+
+bass: note("<f1 bb1 eb1 ab1>")
+  .struct("[- x] [- x] [- x] [- x x]")
+  .s("gm_acoustic_bass")
+  .lpf(900)
+  .gain(1)
+
+pad: chord("<Fm9 Bbm9 Eb^9 Ab^7>")
+  .voicing()
+  .s("gm_pad_warm")
+  .attack(1).release(2)
+  .room(0.8).roomsize(4)
+  .gain(0.2)

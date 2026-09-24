@@ -1,0 +1,39 @@
+// Acid techno, 135bpm. Dark warehouse, 4am, someone is definitely sweating on you
+setcpm(135/4)
+
+kick: s("bd*4").bank("RolandTR909").gain(1)
+  ._scope()
+
+// rumble: kick smeared through a big reverb and lowpassed
+rumble: s("bd*4").bank("RolandTR909")
+  .late(1/16)
+  .lpf(120).room(1).roomsize(6)
+  .gain(0.5)
+  .orbit(2)
+
+hats: s("[- oh]*4, hh*16").bank("RolandTR909")
+  .gain("[0.3 0.1]*8")
+
+clap: s("- cp - [cp cp]").bank("RolandTR909")
+  .room(0.3).gain(0.5)
+
+// the 303ish squelch. twist the cutoff slider
+acid: note(`<
+  [c2 c2 c3 c2 eb2 c2 g1 bb1]
+  [c2 c3 c2 eb2 f2 c2 g2 c3]
+>*2`)
+  .s("sawtooth")
+  .lpf(slider(800, 200, 4000)).lpq(18)
+  .lpenv(sine.range(1, 5).slow(8))
+  .decay(0.15).sustain(0)
+  .distort("2:0.4")
+  .delay(0.25).delaytime(3/16)
+  .gain(0.5)
+  ._pianoroll()
+
+stab: note("<[c4,eb4,g4] - - [bb3,d4,f4]>")
+  .struct("[- x - -]*2")
+  .s("square")
+  .lpf(1500)
+  .room(0.6).delay(0.5)
+  .gain(0.2)

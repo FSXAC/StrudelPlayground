@@ -1,0 +1,39 @@
+// Liquid drum & bass, 174bpm, D minor. Fast drums, slow emotions
+setcpm(174/4)
+
+brk: s("breaks165").loopAt(2).chop(16)
+  .sometimesBy(0.15, x => x.ply(2))
+  .hpf(200)
+  .gain(0.5)
+  .cut(1)
+
+drums: s(`
+  bd - - - - - - - - - bd - - - - -,
+  - - - - sd - - - - - - - sd - - -
+`).bank("RolandTR909").gain(0.9)
+  ._scope()
+
+hats: s("hh*8").bank("RolandTR909")
+  .gain("[0.15 0.3]*4")
+
+// reese: two slightly detuned saws fighting each other
+reese: note("<d1 d1 bb0 c1>")
+  .add(note("0,0.12"))
+  .s("sawtooth")
+  .lpf(sine.range(200, 900).slow(4)).lpq(4)
+  .shape(0.3)
+  .gain(0.5)
+
+pad: chord("<Dm9 Dm9 Bb^9 C6>")
+  .voicing()
+  .s("gm_pad_halo")
+  .attack(0.8).release(3)
+  .room(0.9).roomsize(6)
+  .gain(0.25)
+  ._pianoroll()
+
+keys: n("<[0 4 7 9]*2 [2 4 7 11]*2>".add("<0 0 -2 -1>"))
+  .scale("D5:minor")
+  .s("gm_epiano1")
+  .delay(0.4).delaytime(3/16)
+  .gain(0.3)

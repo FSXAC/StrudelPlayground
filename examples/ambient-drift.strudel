@@ -1,0 +1,30 @@
+// Ambient, drifting. Lie on the floor and stare at the ceiling
+setcpm(60/4)
+
+pad: chord("<C^9 Am9 F^9 Em9>/2")
+  .voicing()
+  .s("sawtooth")
+  .attack(3).release(4)
+  .lpf(perlin.range(400, 1200).slow(8))
+  .room(1).roomsize(8)
+  .gain(0.15)
+  ._pianoroll()
+
+drone: note("<c2 a1 f1 e1>/2")
+  .s("sine")
+  .attack(2).release(3)
+  .gain(0.4)
+
+// random sparkles, most of them dropped
+sparkle: n(irand(8).segment(8))
+  .scale("C5:pentatonic")
+  .s("gm_celesta")
+  .degradeBy(0.6)
+  .pan(rand)
+  .delay(0.5).delaytime(0.375).delayfeedback(0.6)
+  .room(0.9)
+  .gain(0.3)
+
+wind: s("brown")
+  .lpf(sine.range(300, 900).slow(16))
+  .gain(0.05)
