@@ -1,0 +1,39 @@
+// Lo-fi hip hop, 82bpm. Rainy window, cold coffee, homework you're not doing
+setcpm(82/4)
+
+drums: s("bd - [- bd] -, - sd - sd").bank("EmuSP12")
+  .swingBy(1/6, 4)
+  .crush(8).lpf(3500)
+  .gain(0.8)
+
+hats: s("hh*8").bank("EmuSP12")
+  .gain("[0.3 0.15]*4")
+  .swingBy(1/6, 4)
+  .crush(6)
+
+keys: chord("<Dm9 G7 C^7 A7>")
+  .voicing()
+  .struct("x - - [- x]")
+  .s("gm_epiano1")
+  .lpf(1400)
+  .room(0.5)
+  .gain(0.5)
+  ._pianoroll()
+
+melody: n(`<
+  [4 - 2 -] [- 1 - -]
+  [0 - - 2] [- - 4 -]
+>`).scale("C4:major")
+  .s("gm_vibraphone")
+  .delay(0.4).delaytime(1/3).delayfeedback(0.4)
+  .room(0.6)
+  .gain(0.4)
+
+bass: note("<d2 g1 c2 a1>")
+  .struct("x - - [- x]")
+  .s("gm_acoustic_bass")
+  .lpf(600)
+  .gain(0.9)
+
+// rain / tape hiss
+rain: s("pink").hpf(2000).lpf(6000).gain(0.03)
